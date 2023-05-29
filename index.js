@@ -54,19 +54,19 @@ const io = new Server(server, {
     var response = { "response" : "This is messages POST method for conclude chat." }
     console.log(response);
     const resParams = {
-      "id": req.case.caseNumber,
-      "threadId": req.threadId,
-      "messageId": req.replyToMessageId,
-      "skillId": req.skill.skillId,
-      "channelId": req.post.channelId,
+      "id": req.body.case.caseNumber,
+      "threadId": req.body.threadId,
+      "messageId": req.body.replyToMessageId,
+      "skillId": req.body.skill.skillId,
+      "channelId": req.body.post.channelId,
       "channel": {
-          "id": req.post.channelId,
+          "id": req.body.post.channelId,
           "originId": "",
           "type": "chat"
       },
       "agentDetail": {
-        "agentId": req.agentDetail.agentId,
-        "agentName": req.agentDetail.agentName
+        "agentId": req.body.agentDetail.agentId,
+        "agentName": req.body.agentDetail.agentName
       }
   }
     res.send(resParams);
