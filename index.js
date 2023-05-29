@@ -48,7 +48,7 @@ const io = new Server(server, {
     res.send(resParams);
   })
 
-  app.post('/api/vccChat/agent/concludeChat', async function (req, res) {
+  app.post('/api/vccChat/agent/concludeChat', function (req, res) {
     console.log("In postId");
     console.log(req.body);
     var response = { "response" : "This is messages POST method for conclude chat." }
