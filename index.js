@@ -1,6 +1,6 @@
 
-const axios = require('axios');
-const uuid = require('uuid');
+//const cls = require('axios');
+//const uuid = require('uuid');
 const express = require('express');
 const app = express();
 app.use(express.json());
@@ -8,7 +8,9 @@ app.use(express.urlencoded({ extended: false }));
 const http = require('http');
 const cors = require('cors');
 const {Server} = require("socket.io");
-import { v4 as uuidv4 } from 'uuid';
+
+const Nanoid = require('nanoid');
+const NanoidAsync = require('nanoid/async');
 
 app.use(cors());
 const server = http.createServer(app);
@@ -78,8 +80,9 @@ const io = new Server(server, {
     console.log(req.body);
     var response = { "response" : "This is messages POST method for token generation." }
     console.log(response);
+    const nanoId = NanoidAsync.nanoid();
     const resParams = {
-      "access_token": uuidv4(),
+      "access_token": nanoId,
       "threadId": 36000,
       "token_type": "Bearer",
       "scope": null
