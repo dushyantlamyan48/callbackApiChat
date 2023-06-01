@@ -1,6 +1,6 @@
 
-//const cls = require('axios');
-//const uuid = require('uuid');
+const axios = require('axios');
+const uuid = require('uuid');
 const express = require('express');
 const app = express();
 app.use(express.json());
@@ -8,9 +8,6 @@ app.use(express.urlencoded({ extended: false }));
 const http = require('http');
 const cors = require('cors');
 const {Server} = require("socket.io");
-
-const Nanoid = require('nanoid');
-const NanoidAsync = require('nanoid/async');
 
 app.use(cors());
 const server = http.createServer(app);
@@ -71,21 +68,6 @@ const io = new Server(server, {
         "agentId": req.body.agentDetail.agentId,
         "agentName": req.body.agentDetail.agentName
       }
-  }
-    res.send(resParams);
-  })
-
-  app.post('/api/1.0/token', function (req, res) {
-    console.log("In token");
-    console.log(req.body);
-    var response = { "response" : "This is messages POST method for token generation." }
-    console.log(response);
-    const nanoId = NanoidAsync.nanoid();
-    const resParams = {
-      "access_token": nanoId,
-      "threadId": 36000,
-      "token_type": "Bearer",
-      "scope": null
   }
     res.send(resParams);
   })
