@@ -72,5 +72,19 @@ const io = new Server(server, {
     res.send(resParams);
   })
 
+  app.post('/api/1.0/token', function (req, res) {
+    console.log("In token");
+    console.log(req.body);
+    var response = { "response" : "This is messages POST method for token generation." }
+    console.log(response);
+    const resParams = {
+      "access_token": "100fb18bb552eff1d6603482f19eb22669280f67",
+      "threadId": 36000,
+      "token_type": "Bearer",
+      "scope": null
+  }
+    res.send(resParams);
+  })
+
 server.listen(3001, () => {
     console.log("Server is running")})
