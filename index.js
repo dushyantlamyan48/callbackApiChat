@@ -8,6 +8,7 @@ app.use(express.urlencoded({ extended: false }));
 const http = require('http');
 const cors = require('cors');
 const {Server} = require("socket.io");
+import { v4 as uuidv4 } from 'uuid';
 
 app.use(cors());
 const server = http.createServer(app);
@@ -68,6 +69,20 @@ const io = new Server(server, {
         "agentId": req.body.agentDetail.agentId,
         "agentName": req.body.agentDetail.agentName
       }
+  }
+    res.send(resParams);
+  })
+
+  app.post('/api/1.0/token', function (req, res) {
+    console.log("In token");
+    console.log(req.body);
+    var response = { "response" : "This is messages POST method for token generation." }
+    console.log(response);
+    const resParams = {
+      "access_token": uuidv4(),
+      "threadId": 36000,
+      "token_type": "Bearer",
+      "scope": null
   }
     res.send(resParams);
   })
