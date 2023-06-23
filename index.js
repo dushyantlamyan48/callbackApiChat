@@ -86,5 +86,14 @@ const io = new Server(server, {
     res.send(resParams);
   })
 
+  app.post('/api/vccChat/agent/skillId', function (req, res) {
+    console.log("In token");
+    console.log(req.body);
+    var response = { "response" : "This is messages POST method for skillId return." }
+    console.log(response);
+    const resParams = {}
+    res.send(resParams);
+  })
+
 server.listen(3001, () => {
     console.log("Server is running")})
